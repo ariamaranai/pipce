@@ -1,1 +1,1 @@
-{"manifest_version":3,"name":"pipce","version":"0","description":"Watch video using Picture-in-Picture","icons":{"48":"128.png","128":"128.png"},"permissions":["contextMenus","scripting"],"host_permissions":["<all_urls>"],"background":{"service_worker":"s.js"},"action":{}}
+{"manifest_version":3,"name":"pipce","version":"0","description":"Watch video using Picture-in-Picture","icons":{"128":"128.png"},"permissions":["contextMenus","scripting"],"host_permissions":["<all_urls>"],"background":{"service_worker":"s.js"},"action":{}}
