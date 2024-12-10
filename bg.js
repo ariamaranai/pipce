@@ -6,7 +6,8 @@ let f =(a, b)=> (b||a).url[0] !="c" && chrome.scripting.executeScript({
     let d = document, v = d.getElementsByTagName("video"), i = v.length, n = 0, w = 0, t= 0
     if (i) {
       while (w < (t = v[--i].offsetWidth) && (w = t, n = i), i);
-      (v = v[n]) != d.pictureInPictureElement ? (v.disablePictureInPicture = 0, v.requestPictureInPicture()) : d.exitPictureInPicture()
+      (v = v[n]).addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), {capture: !0, once: !0})
+      v != d.pictureInPictureElement ? (v.disablePictureInPicture = 0, v.requestPictureInPicture()) : d.exitPictureInPicture()
     }
   }
 })
