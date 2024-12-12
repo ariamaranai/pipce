@@ -1,7 +1,6 @@
-(({action, contextMenus, runtime}) => {
+(chrome => {
   let run = (a, b) =>
-    (b || a).url[0] != "c" &&
-    chrome.scripting.executeScript({
+    (b || a).url[0] != "c" && chrome.scripting.executeScript({
       target: b
         ? { tabId: b.id, frameIds: [a.frameId] }
         : { tabId: a.id, allFrames: !0 },
@@ -30,10 +29,10 @@
         }
       }
     });
-  action.onClicked.addListener(run);
-  contextMenus.onClicked.addListener(run);
-  runtime.onInstalled.addListener(() =>
-    contextMenus.create({
+  chrome.action.onClicked.addListener(run);
+  chrome.contextMenus.onClicked.addListener(run);
+  chrome.runtime.onInstalled.addListener(() =>
+    chrome.contextMenus.create({
       id: "",
       title: "Picture in picture",
       contexts: ["page", "video"],
