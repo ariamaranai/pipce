@@ -20,12 +20,9 @@
             e => e.stopImmediatePropagation(),
             { capture: !0, once: !0 }
           );
-          if (video != document.pictureInPictureElement) {
-            video.disablePictureInPicture = 0;
-            video.requestPictureInPicture();
-          } else {
-            document.exitPictureInPicture();
-          }
+          video != document.pictureInPictureElement
+            ? (video.disablePictureInPicture = 0 , video.requestPictureInPicture())
+            : document.exitPictureInPicture();
         }
       }
     });
