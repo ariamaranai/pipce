@@ -1,12 +1,12 @@
 (chrome => {
   let run = (a, b) =>
-    (b || a).url[0] != "c" && chrome.scripting.executeScript({
+    (!b && a.url[0] == "c") || chrome.scripting.executeScript({
       target: b
         ? { tabId: b.id, frameIds: [a.frameId] }
         : { tabId: a.id, allFrames: !0 },
       world: "MAIN",
       func: () => {
-        let video = document.getElementsByTagName("video");
+        let video = document.body.getElementsByTagName("video");
         let i = video.length;
         let maxWidth = 0;
         let width = 0;
@@ -33,6 +33,7 @@
       id: "",
       title: "Picture in picture",
       contexts: ["page", "video"],
+      documentUrlPatterns: ["https://*/*", "https://*/", "http://*/*", "http://*/", "file://*/*", "file://*/"]
     })
   );
 })(chrome)
