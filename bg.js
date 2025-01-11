@@ -6,7 +6,8 @@
         : { tabId: a.id, allFrames: !0 },
       world: "MAIN",
       func: () => {
-        let video = document.body.getElementsByTagName("video");
+        let d = document;
+        let video = d.body.getElementsByTagName("video");
         let i = video.length;
         let index = 0;
         if (i) {
@@ -22,9 +23,9 @@
             e => e.stopImmediatePropagation(),
             { capture: !0, once: !0 }
           );
-          video != document.pictureInPictureElement
+          video != d.pictureInPictureElement
             ? (video.disablePictureInPicture = 0 , video.requestPictureInPicture())
-            : document.exitPictureInPicture();
+            : d.exitPictureInPicture();
         }
       }
     });
