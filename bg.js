@@ -1,10 +1,12 @@
 {
-  let run = (a, b) =>
+  let run = async (a, b) =>
     (!b && a.url[0] == "c") || chrome.scripting.executeScript({
       target: b
         ? { tabId: b.id, frameIds: [a.frameId] }
         : { tabId: a.id, allFrames: !0 },
-      world: "MAIN",
+      world: (await chrome.contentSettings.javascript.get({
+        primaryUrl: (b || a).url
+      })).setting == "allow" ? "MAIN" : "ISOLATED",
       func: () => {
         let d = document;
         let video = d.body.getElementsByTagName("video");
