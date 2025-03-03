@@ -25,7 +25,7 @@
                 { capture: !0, once: !0 }
               );
               video != d.pictureInPictureElement
-                ? (video.disablePictureInPicture = 0 , video.requestPictureInPicture())
+                ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
                 : d.exitPictureInPicture();
             }
           }
