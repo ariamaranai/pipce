@@ -1,6 +1,6 @@
 {
   let run = (a, b) => {
-    if (!b && a.url[0] == "c") {
+    if (!(!b && a.url[0] == "c")) {
       try {
         chrome.scripting.executeScript({
           target: b
@@ -21,8 +21,8 @@
                 );
               }
               (video = video[index]).addEventListener("enterpictureinpicture",
-                e => e.stopImmediatePropagation(),
-                { capture: !0, once: !0 }
+                e => (e.stopImmediatePropagation()),
+                1
               );
               video != d.pictureInPictureElement
                 ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
