@@ -1,37 +1,34 @@
 {
   let run = (a, b) => {
-    if (!(!b && a.url[0] == "c")) {
-      try {
-        chrome.scripting.executeScript({
-          target: b
-            ? { tabId: b.id, frameIds: [a.frameId] }
-            : { tabId: a.id, allFrames: !0 },
-          func: () => {
-            let d = document;
-            let video = d.body.getElementsByTagName("video");
-            let i = video.length;
-            let index = 0;
-            if (i) {
-              if (i > 1) {
-                let maxWidth = 0;
-                let width = 0;
-                while (
-                  maxWidth < (width = video[--i].offsetWidth) && (maxWidth = width, index = i),
-                  i
-                );
-              }
-              (video = video[index]).addEventListener("enterpictureinpicture",
-                e => (e.stopImmediatePropagation()),
-                1
+    try {
+      let tabId = (b || a).id;
+      chrome.scripting.executeScript({
+        target: b ? { tabId, frameIds: [a.frameId] } : { tabId, allFrames: !0 },
+        func: () => {
+          let d = document;
+          let video = d.body.getElementsByTagName("video");
+          let i = video.length;
+          let index = 0;
+          if (i) {
+            if (i > 1) {
+              let maxWidth = 0;
+              let width = 0;
+              while (
+                maxWidth < (width = video[--i].offsetWidth) && (maxWidth = width, index = i),
+                i
               );
-              video != d.pictureInPictureElement
-                ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
-                : d.exitPictureInPicture();
             }
+            (video = video[index]).addEventListener("enterpictureinpicture",
+              e => (e.stopImmediatePropagation()),
+              1
+            );
+            video != d.pictureInPictureElement
+              ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
+              : d.exitPictureInPicture();
           }
-        });
-      } catch (e) {}
-    }
+        }
+      });
+    } catch (e) {}
   }
   chrome.action.onClicked.addListener(run);
   chrome.contextMenus.onClicked.addListener(run);
