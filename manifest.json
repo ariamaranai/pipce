@@ -8,8 +8,7 @@
   },
   "permissions": [
     "contextMenus",
-    "scripting",
-    "tabs"
+    "scripting"
   ],
   "host_permissions": [
     "<all_urls>"
