@@ -35,6 +35,7 @@ chrome.runtime.onInstalled.addListener(() =>
   chrome.contextMenus.create({
     id: "",
     title: "Picture in picture",
-    contexts: ["page", "video"]
+    contexts: ["page", "video"],
+    documentUrlPatterns: ["https://*/*", "https://*/", "http://*/*", "http://*/", "file://*/*", "file://*/"]
   })
 );
