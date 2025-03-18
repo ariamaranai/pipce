@@ -36,6 +36,6 @@ chrome.runtime.onInstalled.addListener(() =>
     id: "",
     title: "Picture in picture",
     contexts: ["page", "video"],
-    documentUrlPatterns: ["https://*/*", "https://*/", "http://*/*", "http://*/", "file://*/*", "file://*/"]
+    documentUrlPatterns: ["https://*/*", "https://*/", "file://*/*", "file://*/"]
   })
 );
