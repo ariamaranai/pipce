@@ -26,7 +26,8 @@ if (i) {
     ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
     : d.exitPictureInPicture();
 }
-}`    }]
+}`   
+      }]
     }).catch(() => 0);
   }
   chrome.action.onClicked.addListener(run);
