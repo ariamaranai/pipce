@@ -16,10 +16,7 @@ if (i) {
     maxWidth < (width = video[--i].offsetWidth) && (maxWidth = width, index = i),
     i
   );
-  (video = video[index]).addEventListener("enterpictureinpicture",
-    e => (e.stopImmediatePropagation()),
-    1
-  );
+  (video = video[index]).addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1);
   video != d.pictureInPictureElement
     ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
     : d.exitPictureInPicture();
