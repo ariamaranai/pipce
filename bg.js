@@ -1,8 +1,9 @@
 {
   let run = (a, b) => {
     let tabId = (b || a).id;
+    let frameId = a.frameId;
     chrome.userScripts.execute({
-      target: b ? { tabId, frameIds: [a.frameId] } : { tabId, allFrames: !0 },
+      target: frameId ? { tabId, frameIds: [frameId] } : { tabId, allFrames: !0 },
       js: [{ code:
 `{
 let d = document;
