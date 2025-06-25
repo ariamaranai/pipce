@@ -1,7 +1,7 @@
 {
   let run = async (a, b) => {
     try {
-      chrome.userScripts.execute({
+      await chrome.userScripts.execute({
         target: { tabId: (b || a).id, allFrames: !0 },
         js: [{ file: "video.js" }]
       });
