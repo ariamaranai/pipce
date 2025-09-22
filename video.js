@@ -1,7 +1,8 @@
 {
   let { Math, document, innerWidth, innerHeight } = self;
   let { max, min } = Math;
-  let videos = document.getElementsByTagName("video");
+  let { fullscreenElement } = d;
+  let videos = (fullscreenElement ?? document).getElementsByTagName("video");
   let video;
   let maxVisibleSize = 0;
   let i = 0;
@@ -17,7 +18,7 @@
     }
     ++i;
   }
-  video && (
+  (video ??= fullscreenElement?.shadowRoot?.querySelector("video")) && (
     video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
     video != document.pictureInPictureElement
       ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
