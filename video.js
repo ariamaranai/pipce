@@ -1,7 +1,7 @@
 {
   let { Math, document, innerWidth, innerHeight } = self;
   let { max, min } = Math;
-  let { fullscreenElement } = d;
+  let { fullscreenElement } = document;
   let videos = (fullscreenElement ?? document).getElementsByTagName("video");
   let video;
   let maxVisibleSize = 0;
