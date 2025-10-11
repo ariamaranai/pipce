@@ -4,7 +4,7 @@
   let { fullscreenElement } = document;
   let video = fullscreenElement;
   if (video?.tagName != "VIDEO") {
-    let videos = (fullscreenElement ?? document).getElementsByTagName("video");
+    let videos = (fullscreenElement ?? document).getElementsByTagName("VIDEO");
     let maxVisibleSize = 0;
     let i = 0;
     while (i < videos.length) {
@@ -19,7 +19,7 @@
       }
       ++i;
     }
-    video ??= fullscreenElement?.shadowRoot?.querySelector("video")
+    video ??= fullscreenElement?.shadowRoot?.querySelector("VIDEO")
   } else
     video.readyState || (video = 0);
 
