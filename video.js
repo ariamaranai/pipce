@@ -21,7 +21,7 @@
     }
     video ??= fullscreenElement?.shadowRoot?.querySelector("video")
   } else
-    video = video.readyState && video;
+    video.readyState || (video = 0);
 
   video &&
     video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
