@@ -19,7 +19,7 @@
       }
       ++i;
     }
-    video ??= fullscreenElement?.shadowRoot?.querySelector("VIDEO");
+    video ?? ((video = fullscreenElement?.shadowRoot?.querySelector("VIDEO")) && !video.readyState || (video = 0));
   } else
     video.readyState || (video = 0);
 
