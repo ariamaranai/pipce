@@ -22,9 +22,10 @@
   } else
     video.readyState || (video = 0);
 
-  video &&
-  video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
-  video != document.pictureInPictureElement
-    ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
-    : document.exitPictureInPicture();
+  video && (
+    video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
+    video != d.pictureInPictureElement
+      ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
+      : d.exitPictureInPicture()
+  )
 }
