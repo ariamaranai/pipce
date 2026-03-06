@@ -18,14 +18,12 @@
       }
       ++i;
     }
-    video?.readyState || (video = video.shadowRoot?.querySelector("VIDEO"))?.readyState || (video = 0);
-  } else
-    video.readyState || (video = 0);
-
-  video && (
+    video?.readyState || (video = video.shadowRoot?.querySelector("VIDEO"));
+  }
+  video?.readyState && (
     video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
     video != d.pictureInPictureElement
       ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
       : d.exitPictureInPicture()
-  )
+  );
 }
