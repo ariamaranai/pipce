@@ -2,7 +2,7 @@
   let d = document;
   let video = d.fullscreenElement || d.scrollingElement;
   if (!(video instanceof HTMLVideoElement)) {
-    let videos = video.getElementsByTagName("VIDEO");
+    let videos = video.getElementsByTagName("video");
     let { max, min } = Math;
     let maxVisibleSize = 0;
     let i = 0;
@@ -18,7 +18,7 @@
       }
       ++i;
     }
-    video?.readyState || (video = video.shadowRoot?.querySelector("VIDEO"));
+    video?.readyState || (video = video.shadowRoot?.querySelector("video"));
   }
   video?.readyState && (
     video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
