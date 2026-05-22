@@ -24,8 +24,8 @@
   }
   video?.readyState && (
     video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
-    video != d.pictureInPictureElement
-      ? video.requestPictureInPicture(video.disablePictureInPicture = 0)
-      : d.exitPictureInPicture()
+    video == d.pictureInPictureElement
+      ? d.exitPictureInPicture()
+      : video.requestPictureInPicture(video.disablePictureInPicture = 0)
   );
 }
