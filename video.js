@@ -10,12 +10,9 @@
     while (i) {
       let _video = videos[--i];
       if (_video.readyState) {
-        let { right, x, bottom, y } = _video.getBoundingClientRect();        
-        let visibleW = (right < wndW ? right : wndW) - (x < 0 ? 0 : x);
-        let visibleH = (bottom < wndH ? bottom : wndH) - (y < 0 ? 0 : y);
-        let visibleSize = visibleW * visibleH;
-        maxVisibleSize < visibleSize && (
-          maxVisibleSize = visibleSize,
+        let { right: $0, x, bottom, y } = _video.getBoundingClientRect();
+        maxVisibleSize < ($0 = (($0 < wndW ? $0 : wndW) - (x < 0 ? 0 : x)) * ((bottom < wndH ? bottom : wndH) - (y < 0 ? 0 : y))) && (
+          maxVisibleSize = $0,
           video = _video
         );
       }

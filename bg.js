@@ -1,21 +1,20 @@
+onunhandledrejection = e => e.preventDefault();
 {
-  let run = async (a, b) => {
-    try {
-      return await chrome.scripting.executeScript({
-        target: { tabId: (b || a).id, allFrames: !0 },
+  let { action, contextMenus, scripting, runtime } = chrome;
+  let f = (a, b) =>
+    scripting.executeScript({
+        target: { tabId: (b ?? a).id, allFrames: !0 },
         world: "MAIN",
         files: ["video.js"]
-      });
-    } catch {}
-  }
-  chrome.action.onClicked.addListener(run);
-  chrome.contextMenus.onClicked.addListener(run);
+    });
+  action.onClicked.addListener(f);
+  contextMenus.onClicked.addListener(f);
+  runtime.onInstalled.addListener(() =>
+    contextMenus.create({
+      id: "",
+      title: "Picture in picture",
+      contexts: ["page", "video"],
+      documentUrlPatterns: ["https://*/*", "file://*"]
+    })
+  );
 }
-chrome.runtime.onInstalled.addListener(() =>
-  chrome.contextMenus.create({
-    id: "",
-    title: "Picture in picture",
-    contexts: ["page", "video"],
-    documentUrlPatterns: ["https://*/*", "file://*"]
-  })
-);
