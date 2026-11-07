@@ -1,25 +1,29 @@
 {
   let d = document;
-  let video = d.fullscreenElement || d.scrollingElement;
-  if (video?.localName != "video") {
-    let videos = video.getElementsByTagName("video");
+  let video = d.fullscreenElement;
+  if (video?.localName !== "video") {
     let wndW = innerWidth;
     let wndH = innerHeight;
     let maxVisibleSize = 0;
+    let target = video ?? d;
+    let videos = video.getElementsByTagName("video");
+    let shadowRoot = target.shadowRoot;
+    shadowRoot &&
+    (shadowRoot = shadowRoot.querySelectorAll("video")).length &&
+    (videos = [...videos, ...shadowRoot]);
     let i = videos.length;
     while (i) {
-      let _video = videos[--i];
-      if (_video.readyState) {
-        let { right: $0, x, bottom, y } = _video.getBoundingClientRect();
+      let v = videos[--i];
+      if (v.readyState) {
+        let { right: $0, x, bottom, y } = v.getBoundingClientRect();
         maxVisibleSize < ($0 = (($0 < wndW ? $0 : wndW) - (x < 0 ? 0 : x)) * ((bottom < wndH ? bottom : wndH) - (y < 0 ? 0 : y))) && (
           maxVisibleSize = $0,
-          video = _video
+          video = v
         );
       }
     }
-    video?.readyState || (video = video.shadowRoot?.querySelector("video"));
   }
-  video?.readyState && (
+  video && video.readyState && (
     video.addEventListener("enterpictureinpicture", e => e.stopImmediatePropagation(), 1),
     video == d.pictureInPictureElement
       ? d.exitPictureInPicture()
