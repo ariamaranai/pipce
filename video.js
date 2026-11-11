@@ -6,7 +6,7 @@
     let wndH = innerHeight;
     let maxVisibleSize = 0;
     let target = video ?? d;
-    let videos = video.getElementsByTagName("video");
+    let videos = target.getElementsByTagName("video");
     let shadowRoot = target.shadowRoot;
     shadowRoot &&
     (shadowRoot = shadowRoot.querySelectorAll("video")).length &&
